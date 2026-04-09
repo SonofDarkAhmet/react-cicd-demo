@@ -1,4 +1,4 @@
-name: Deploy distrubution
+name: Deploy distribution
 #on: push
 on: workflow_dispatch
 jobs:
@@ -8,6 +8,6 @@ jobs:
       - name: deploy dist
         run: |
           echo "Cloning repository"
-          echo ${{toJson(github)}}
-          git clone https://github.com/${{github.repository}}.git myfiles
+          echo '${{ toJson(github) }}'
+          git clone https://github.com/${{ github.repository }}.git myfiles
           cd myfiles && ls
