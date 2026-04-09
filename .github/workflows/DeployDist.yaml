@@ -1,13 +1,9 @@
 name: Deploy distribution
-#on: push
-on: workflow_dispatch
+on: push
+#on: workflow_dispatch
 jobs:
   test:
     runs-on: ubuntu-latest
     steps:
       - name: deploy dist
-        run: |
-          echo "Cloning repository"
-          echo '${{ toJson(github) }}'
-          git clone https://github.com/${{ github.repository }}.git myfiles
-          cd myfiles && ls
+        run: actions/checkout@v6
