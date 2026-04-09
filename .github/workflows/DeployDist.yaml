@@ -15,7 +15,8 @@ jobs:
         uses: actions/setup-node@v5
         with:
           node-version: 22
-      - uses: actions/cache@v4
+          cache: "npm"
+      - uses: actions/cache@v5
         id: npm-cache
         with:
           path: ${{ steps.setup-nodejs.outputs.cache-dir }}
@@ -41,7 +42,8 @@ jobs:
         uses: actions/setup-node@v5
         with:
           node-version: 22
-      - uses: actions/cache@v4
+          cache: "npm"
+      - uses: actions/cache@v5
         id: npm-cache
         with:
           path: ${{ steps.setup-nodejs.outputs.cache-dir }}
