@@ -1,5 +1,8 @@
 name: Deploy distribution
-on: push
+#on: [push, workflow_dispatch]
+on:
+  - push
+  - workflow_dispatch
 #on: workflow_dispatch
 jobs:
   test:
@@ -8,12 +11,19 @@ jobs:
       - name: Test project
         uses: actions/checkout@v6
       - name: Setup NodeJS
+        id: setup-nodejs
         uses: actions/setup-node@v5
         with:
           node-version: 22
+      - uses: actions/cache@v4
+        id: npm-cache
+        with:
+          path: ${{ steps.setup-nodejs.outputs.cache-dir }}
+          key: ${{ runner.os }}-node-${{ hashFiles('**/package-lock.json') }}
       - name: Check node version
         run: node -v
       - name: Install dependencies
+        if: steps.npm-cache.outputs.cache-hit != 'true'
         run: npm install
       - name: Test code
         run: npm run test
@@ -27,12 +37,19 @@ jobs:
       - name: Build project
         uses: actions/checkout@v6
       - name: Setup NodeJS
+        id: setup-nodejs
         uses: actions/setup-node@v5
         with:
           node-version: 22
+      - uses: actions/cache@v4
+        id: npm-cache
+        with:
+          path: ${{ steps.setup-nodejs.outputs.cache-dir }}
+          key: ${{ runner.os }}-node-${{ hashFiles('**/package-lock.json') }}
       - name: Check node version
         run: node -v
       - name: Install dependencies
+        if: steps.npm-cache.outputs.cache-hit != 'true'
         run: npm install
       - name: Build code
         run: npm run build
