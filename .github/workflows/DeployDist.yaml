@@ -18,7 +18,7 @@ jobs:
       - uses: actions/cache@v5
         id: npm-cache
         with:
-          path: node-modules
+          path: node_modules
           key: ${{ runner.os }}-node-${{ hashFiles('**/package-lock.json') }}
       - name: Check node version
         run: node -v
@@ -44,7 +44,7 @@ jobs:
       - uses: actions/cache@v5
         id: npm-cache
         with:
-          path: node-modules
+          path: node_modules
           key: ${{ runner.os }}-node-${{ hashFiles('**/package-lock.json') }}
       - name: Check node version
         run: node -v
