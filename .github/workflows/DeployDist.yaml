@@ -5,5 +5,5 @@ jobs:
   test:
     runs-on: ubuntu-latest
     steps:
-      - name: deploy dist
-        run: actions/checkout@v6
+      - name: Get code
+        uses: actions/checkout@v6
