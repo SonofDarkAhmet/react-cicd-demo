@@ -20,6 +20,8 @@ jobs:
       - name: Completed job
         run: echo "Test job was completed"
   build:
+    needs:
+      - test
     runs-on: ubuntu-latest
     steps:
       - name: Build project
@@ -36,3 +38,11 @@ jobs:
         run: npm run build
       - name: Completed job
         run: echo "Build job was completed"
+  deploy:
+    needs:
+      - test
+      - build
+    runs-on: ubuntu-latest
+    steps:
+      - name: Deploy project
+        run: echo "Deploying project to npm registry"
