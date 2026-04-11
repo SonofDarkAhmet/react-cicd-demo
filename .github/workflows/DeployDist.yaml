@@ -1,9 +1,14 @@
 name: Deploy distribution
 #on: [push, workflow_dispatch]
 on:
-  - push
-  - workflow_dispatch
-#on: workflow_dispatch
+  push:
+    branches:
+      - main
+      - feature/*
+    paths-ignore:
+      - "README.md"
+      - "github/workflows/*"
+  workflow_dispatch:
 jobs:
   test:
     runs-on: ubuntu-latest
