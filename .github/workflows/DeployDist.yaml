@@ -53,6 +53,11 @@ jobs:
         run: npm install
       - name: Build code
         run: npm run build
+      - name: Upload build artifacts
+        uses: actions/upload-artifact@v7
+        with:
+          name: dist-files
+          path: dist
       - name: Completed job
         run: echo "Build job was completed"
   deploy:
@@ -61,5 +66,13 @@ jobs:
       - build
     runs-on: ubuntu-latest
     steps:
+      - name: Download build artifacts
+        uses: actions/download-artifact@v7
+        with:
+          name: dist-files
+          path: dist
       - name: Deploy project
-        run: echo "Deploying project to npm registry"
+        run: |
+          echo "Deploying files below"
+          ls -la dist
+          echo "Deployment completed"
