@@ -1,12 +1,5 @@
 name: Deploy React to Github Pages
 on:
-  push:
-    branches:
-      - main
-      - feature/*
-    paths-ignore:
-      - README.md
-      - .github/workflows/*
   workflow_dispatch:
 jobs:
   test:
@@ -31,10 +24,10 @@ jobs:
         uses: ./.github/actions/setupnode
       - name: Build code
         run: npm run build
-      - name: Upload build artifacts
+      - name: Upload dist artifact
         uses: actions/upload-pages-artifact@v3
         with:
-          name: dist-files
+          name: github-pages
           path: dist
       - name: Completed job
         run: echo "Build job was completed"
