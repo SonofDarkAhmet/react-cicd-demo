@@ -15,21 +15,10 @@ jobs:
     steps:
       - name: Test project
         uses: actions/checkout@v6
-      - name: Setup NodeJS
-        uses: actions/setup-node@v5
+      - name: Setup Node and install dependencies
+        uses: ./.github/actions/setupnode
         with:
-          node-version: 22
-      - uses: actions/cache@v5
-        id: npm-cache
-        with:
-          path: node_modules
-          key: ${{ runner.os }}-node-${{ hashFiles('**/package-lock.json') }}
-          restore-keys: ${{ runner.os }}-node-
-      - name: Check node version
-        run: node -v
-      - name: Install dependencies
-        if: steps.npm-cache.outputs.cache-hit != 'true'
-        run: npm install
+          node-version: 20
       - name: Test code
         run: npm run test
       - name: Completed job
@@ -41,21 +30,8 @@ jobs:
     steps:
       - name: Build project
         uses: actions/checkout@v6
-      - name: Setup NodeJS
-        uses: actions/setup-node@v5
-        with:
-          node-version: 22
-      - uses: actions/cache@v5
-        id: npm-cache
-        with:
-          path: node_modules
-          key: ${{ runner.os }}-node-${{ hashFiles('**/package-lock.json') }}
-          restore-keys: ${{ runner.os }}-node-
-      - name: Check node version
-        run: node -v
-      - name: Install dependencies
-        if: steps.npm-cache.outputs.cache-hit != 'true'
-        run: npm install
+      - name: Setup Node and install dependencies
+        uses: ./.github/actions/setupnode
       - name: Build code
         run: npm run build
       - name: Upload build artifacts
