@@ -6,5 +6,7 @@ jobs:
     steps:
       - name: greet user
         run: echo "Hello World!"
+      - name: test if CI works
+        run: echo "When CI files are updated!"
       - name: bye user
         run: echo "Bye Bye World!"
