@@ -1,34 +1,16 @@
 {
-  "name": "react-demo",
-  "private": true,
-  "version": "0.0.0",
-  "type": "module",
-  "homepage": "https://SonofDarkAhmet.github.io/react-cicd-demo",
+  "name": "docker-revision",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
   "scripts": {
-    "dev": "vite",
-    "build": "vite build",
-    "lint": "eslint . --ext js,jsx --report-unused-disable-directives --max-warnings 0",
-    "preview": "vite preview",
-    "test": "vitest"
+    "dev": "node --watch index.js",
+    "start": "node index.js"
   },
+  "author": "",
+  "license": "ISC",
   "dependencies": {
-    "nodemon": "^3.1.14",
-    "react": "^18.3.1",
-    "react-dom": "^18.3.1"
-  },
-  "devDependencies": {
-    "@testing-library/dom": "^10.4.0",
-    "@testing-library/jest-dom": "^6.4.8",
-    "@testing-library/react": "^16.0.0",
-    "@types/react": "^18.3.3",
-    "@types/react-dom": "^18.3.0",
-    "@vitejs/plugin-react": "^4.3.1",
-    "eslint": "^8.57.0",
-    "eslint-plugin-react": "^7.34.3",
-    "eslint-plugin-react-hooks": "^4.6.2",
-    "eslint-plugin-react-refresh": "^0.4.7",
-    "jsdom": "^24.1.1",
-    "vite": "^5.3.4",
-    "vitest": "^2.0.5"
+    "express": "^4.18.2",
+    "express-fileupload": "^1.5.1"
   }
 }

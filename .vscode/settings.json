@@ -1,0 +1,9 @@
+{
+    "cSpell.words": [
+        "setupnode"
+    ],
+    "sonarlint.connectedMode.project": {
+        "connectionId": "sonofdarkahmet",
+        "projectKey": "SonofDarkAhmet_react-cicd-demo"
+    }
+}
